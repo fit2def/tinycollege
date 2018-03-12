@@ -69,10 +69,10 @@
     <Compile Include="Admin\AddStudentForm.Designer.cs">
       <DependentUpon>AddStudentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="InstructorPortalForm.cs">
+    <Compile Include="Instructor\InstructorPortalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="InstructorPortalForm.Designer.cs">
+    <Compile Include="Instructor\InstructorPortalForm.Designer.cs">
       <DependentUpon>InstructorPortalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -87,10 +87,10 @@
     <Compile Include="Models\Student.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StudentPortalForm.cs">
+    <Compile Include="Student\StudentPortalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StudentPortalForm.Designer.cs">
+    <Compile Include="Student\StudentPortalForm.Designer.cs">
       <DependentUpon>StudentPortalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Student\RegisterForm.cs">
@@ -118,7 +118,7 @@
     <EmbeddedResource Include="Admin\AddStudentForm.resx">
       <DependentUpon>AddStudentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="InstructorPortalForm.resx">
+    <EmbeddedResource Include="Instructor\InstructorPortalForm.resx">
       <DependentUpon>InstructorPortalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -133,7 +133,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="StudentPortalForm.resx">
+    <EmbeddedResource Include="Student\StudentPortalForm.resx">
       <DependentUpon>StudentPortalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Student\RegisterForm.resx">
@@ -155,8 +155,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Instructor\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

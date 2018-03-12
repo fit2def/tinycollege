@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TinyCollege
+namespace TinyCollege.Instructor
 {
-    public partial class InstructorPortalForm : Form
+    public partial class ViewCoursesForm : Form
     {
-        public InstructorPortalForm()
+        public ViewCoursesForm()
         {
             InitializeComponent();
         }

@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using TinyCollege.Admin;
+using TinyCollege.Student;
+using TinyCollege.Instructor;
 
 namespace TinyCollege
 {
-    public partial class mainForm : Form
+    public partial class MainForm : Form
     {
-        public mainForm()
+        public MainForm()
         {
             InitializeComponent();
         }

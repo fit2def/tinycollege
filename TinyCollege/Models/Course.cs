@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TinyCollege.Models
+﻿namespace TinyCollege.Models
 {
-    class Course
+    public class Course
     {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public int SeatsAvailable { get; set; }
+        public Instructor Instructor { get; set; }
     }
 }

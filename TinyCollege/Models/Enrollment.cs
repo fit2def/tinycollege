@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TinyCollege.Models
+﻿namespace TinyCollege.Models
 {
-    class Enrollment
+    public class Enrollment
     {
+        public Student Student { get; set; }
+        public Course Course { get; set; }
+        public double Grade { get; set; }
     }
 }
