@@ -44,22 +44,22 @@ CREATE TABLE Enrollment
 (
            StudentId		int				not null,
 		   CourseId			nvarchar(15)	not	null,
-		   Grade			decimal(3,2)	not null --should this be null?? can a student have no grade
+		   Grade			decimal(3,2)	null,
 		   CONSTRAINT fk_Enrollment_Student FOREIGN KEY (StudentId) REFERENCES Student(StudentId),
 		   CONSTRAINT fk_Enrollment_Course FOREIGN KEY (CourseId) REFERENCES Course(CourseID)
 );
 
-insert into Instructor(FirstName, LastName)
-	values('Josh', 'Morrison');
-insert into Student(FirstName, LastName)
-	values('Cole', 'Hargis');
-insert into Course(CourseId, CourseName, SeatAvailable, InstructorId)
-	values('CISS176', 'Intro to Comp Science', 25, 1);
-insert into Enrollment(StudentId, CourseId, Grade)
-	values(1, 'CISS176', 3.8);
+--insert into Instructor(FirstName, LastName)
+--	values('Josh', 'Morrison');
+--insert into Student(FirstName, LastName)
+--	values('Cole', 'Hargis');
+--insert into Course(CourseId, CourseName, SeatAvailable, InstructorId)
+--	values('CISS176', 'Intro to Comp Science', 25, 1);
+--insert into Enrollment(StudentId, CourseId, Grade)
+--	values(1, 'CISS176', 3.8);
 
 
-select * from Instructor;
-select * from Student;
-select * from Course;
-select * from Enrollment;
+--select * from Instructor;
+--select * from Student;
+--select * from Course;
+--select * from Enrollment;

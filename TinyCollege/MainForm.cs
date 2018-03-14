@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Windows.Forms;
-using TinyCollege.Admin;
-using TinyCollege.Student;
-using TinyCollege.Instructor;
+using TinyCollege.Students;
+using TinyCollege.Instructors;
+using TinyCollege.Admins;
+using TinyCollege.Models;
+using System.Collections.Generic;
+using TinyCollege.Utilities;
 
 namespace TinyCollege
 {
@@ -39,6 +42,9 @@ namespace TinyCollege
             Close();
         }
 
-
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            List<Instructor> instructorList = Data.GetInstructors();
+        }
     }
 }

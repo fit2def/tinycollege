@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -107,6 +108,11 @@
     <Compile Include="Students\ViewCoursesForm.Designer.cs">
       <DependentUpon>ViewCoursesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TinyCollegeDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TinyCollegeDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Utilities\Data.cs" />
     <Compile Include="Utilities\ModelRepository.cs" />
     <EmbeddedResource Include="Admins\AdminPortalForm.resx">
@@ -154,10 +160,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TinyCollegeDBDataSet.xsc">
+      <DependentUpon>TinyCollegeDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TinyCollegeDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TinyCollegeDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TinyCollegeDBDataSet.xss">
+      <DependentUpon>TinyCollegeDBDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
