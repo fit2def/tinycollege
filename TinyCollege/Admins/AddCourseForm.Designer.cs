@@ -1,6 +1,6 @@
-﻿namespace TinyCollege.Admin
+﻿namespace TinyCollege.Admins
 {
-    partial class AddInstructorForm
+    partial class AddCourseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // AddInstructorForm
+            // AddCourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(991, 679);
-            this.Name = "AddInstructorForm";
-            this.Text = "AddInstructorForm";
+            this.ClientSize = new System.Drawing.Size(883, 674);
+            this.Name = "AddCourseForm";
+            this.Text = "AddCourseForm";
+            this.Load += new System.EventHandler(this.AddCourseForm_Load);
             this.ResumeLayout(false);
 
         }

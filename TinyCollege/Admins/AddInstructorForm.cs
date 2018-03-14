@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TinyCollege.Admin
+namespace TinyCollege.Admins
 {
     public partial class AddInstructorForm : Form
     {
         public AddInstructorForm()
         {
             InitializeComponent();
+        }
+
+        private void AddInstructorForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -45,34 +45,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\AdminPortalForm.cs">
+    <Compile Include="Admins\AdminPortalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\AdminPortalForm.Designer.cs">
+    <Compile Include="Admins\AdminPortalForm.Designer.cs">
       <DependentUpon>AdminPortalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AddCourseForm.cs">
+    <Compile Include="Admins\AddCourseForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\AddCourseForm.Designer.cs">
+    <Compile Include="Admins\AddCourseForm.Designer.cs">
       <DependentUpon>AddCourseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AddInstructorForm.cs">
+    <Compile Include="Admins\AddInstructorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\AddInstructorForm.Designer.cs">
+    <Compile Include="Admins\AddInstructorForm.Designer.cs">
       <DependentUpon>AddInstructorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AddStudentForm.cs">
+    <Compile Include="Admins\AddStudentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Admin\AddStudentForm.Designer.cs">
+    <Compile Include="Admins\AddStudentForm.Designer.cs">
       <DependentUpon>AddStudentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Instructor\InstructorPortalForm.cs">
+    <Compile Include="Instructors\InstructorPortalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Instructor\InstructorPortalForm.Designer.cs">
+    <Compile Include="Instructors\InstructorPortalForm.Designer.cs">
       <DependentUpon>InstructorPortalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
@@ -82,43 +82,46 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseFromDB.cs" />
     <Compile Include="Models\Enrollment.cs" />
+    <Compile Include="Models\EnrollmentFromDB.cs" />
     <Compile Include="Models\Instructor.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Student\StudentPortalForm.cs">
+    <Compile Include="Students\StudentPortalForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Student\StudentPortalForm.Designer.cs">
+    <Compile Include="Students\StudentPortalForm.Designer.cs">
       <DependentUpon>StudentPortalForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Student\RegisterForm.cs">
+    <Compile Include="Students\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Student\RegisterForm.Designer.cs">
+    <Compile Include="Students\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Student\ViewCoursesForm.cs">
+    <Compile Include="Students\ViewCoursesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Student\ViewCoursesForm.Designer.cs">
+    <Compile Include="Students\ViewCoursesForm.Designer.cs">
       <DependentUpon>ViewCoursesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Data.cs" />
-    <EmbeddedResource Include="Admin\AdminPortalForm.resx">
+    <Compile Include="Utilities\ModelRepository.cs" />
+    <EmbeddedResource Include="Admins\AdminPortalForm.resx">
       <DependentUpon>AdminPortalForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\AddCourseForm.resx">
+    <EmbeddedResource Include="Admins\AddCourseForm.resx">
       <DependentUpon>AddCourseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\AddInstructorForm.resx">
+    <EmbeddedResource Include="Admins\AddInstructorForm.resx">
       <DependentUpon>AddInstructorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\AddStudentForm.resx">
+    <EmbeddedResource Include="Admins\AddStudentForm.resx">
       <DependentUpon>AddStudentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Instructor\InstructorPortalForm.resx">
+    <EmbeddedResource Include="Instructors\InstructorPortalForm.resx">
       <DependentUpon>InstructorPortalForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
@@ -133,13 +136,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Student\StudentPortalForm.resx">
+    <EmbeddedResource Include="Students\StudentPortalForm.resx">
       <DependentUpon>StudentPortalForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Student\RegisterForm.resx">
+    <EmbeddedResource Include="Students\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Student\ViewCoursesForm.resx">
+    <EmbeddedResource Include="Students\ViewCoursesForm.resx">
       <DependentUpon>ViewCoursesForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">

@@ -1,4 +1,4 @@
-﻿namespace TinyCollege.Admin
+﻿namespace TinyCollege.Admins
 {
     partial class AdminPortalForm
     {

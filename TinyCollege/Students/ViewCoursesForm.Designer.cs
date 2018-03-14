@@ -1,4 +1,4 @@
-﻿namespace TinyCollege.Student
+﻿namespace TinyCollege.Students
 {
     partial class ViewCoursesForm
     {
@@ -37,6 +37,7 @@
             this.ClientSize = new System.Drawing.Size(1070, 597);
             this.Name = "ViewCoursesForm";
             this.Text = "ViewCoursesForm";
+            this.Load += new System.EventHandler(this.ViewCoursesForm_Load);
             this.ResumeLayout(false);
 
         }

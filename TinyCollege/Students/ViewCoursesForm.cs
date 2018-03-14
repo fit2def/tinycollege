@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TinyCollege.Instructor
+namespace TinyCollege.Students
 {
-    public partial class InstructorPortalForm : Form
+    public partial class ViewCoursesForm : Form
     {
-        public InstructorPortalForm()
+        public ViewCoursesForm()
         {
             InitializeComponent();
         }
 
-        private void closeButton_Click(object sender, EventArgs e)
+        private void ViewCoursesForm_Load(object sender, EventArgs e)
         {
-            Close();
+
         }
     }
 }

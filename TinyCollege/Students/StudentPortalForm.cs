@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 
 
-namespace TinyCollege.Student
+namespace TinyCollege.Students
 {
     public partial class StudentPortalForm : Form
     {

@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TinyCollege.Student
+namespace TinyCollege.Admins
 {
-    public partial class RegisterForm : Form
+    public partial class AddCourseForm : Form
     {
-        public RegisterForm()
+        public AddCourseForm()
         {
             InitializeComponent();
+        }
+
+        private void AddCourseForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

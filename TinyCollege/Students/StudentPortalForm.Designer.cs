@@ -1,4 +1,4 @@
-﻿namespace TinyCollege.Student
+﻿namespace TinyCollege.Students
 {
     partial class StudentPortalForm
     {

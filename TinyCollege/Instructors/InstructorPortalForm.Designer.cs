@@ -1,6 +1,6 @@
-﻿namespace TinyCollege.Admin
+﻿namespace TinyCollege.Instructors
 {
-    partial class AddStudentForm
+    partial class InstructorPortalForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,19 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.closeButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // AddStudentForm
+            // closeButton
+            // 
+            this.closeButton.Location = new System.Drawing.Point(610, 653);
+            this.closeButton.Name = "closeButton";
+            this.closeButton.Size = new System.Drawing.Size(182, 82);
+            this.closeButton.TabIndex = 0;
+            this.closeButton.Text = "&Close";
+            this.closeButton.UseVisualStyleBackColor = true;
+            this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
+            // InstructorPortalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 639);
-            this.Name = "AddStudentForm";
-            this.Text = "AddStudentForm";
+            this.ClientSize = new System.Drawing.Size(864, 772);
+            this.Controls.Add(this.closeButton);
+            this.Name = "InstructorPortalForm";
+            this.Text = "InstructorPortalForm";
+            this.Load += new System.EventHandler(this.InstructorPortalForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Button closeButton;
     }
 }
