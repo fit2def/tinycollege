@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using TinyCollege.Models;
 
@@ -16,7 +15,7 @@ namespace TinyCollege.Utilities
         public static ModelRepository Build()
         {
             List<Instructor> instructors =
-                Data.GetInstructors();
+                Data.GetInstructors(); 
             List<Course> courses = 
                 BuildCourses(instructors);
             List<Student> students =
@@ -60,6 +59,11 @@ namespace TinyCollege.Utilities
                     Grade = e.Grade
                 })
                 .ToList();
+        }
+
+        public void Save()
+        {
+            Data.SaveRepository(this);
         }
 
     }
