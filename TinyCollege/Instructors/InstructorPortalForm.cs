@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TinyCollege.Utilities;
 
 namespace TinyCollege.Instructors
 {
     public partial class InstructorPortalForm : Form
     {
-        public InstructorPortalForm()
+        private readonly ModelRepository _repo;
+
+        public InstructorPortalForm(ModelRepository repo)
         {
             InitializeComponent();
         }

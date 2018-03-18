@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using TinyCollege.Utilities;
 
 namespace TinyCollege.Students
 {
     public partial class StudentPortalForm : Form
     {
-        public StudentPortalForm()
+        private readonly ModelRepository _repo;
+
+        public StudentPortalForm(ModelRepository repo)
         {
             InitializeComponent();
+            _repo = repo;
         }
 
 

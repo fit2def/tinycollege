@@ -6,37 +6,46 @@ namespace TinyCollege.Utilities
 {
     public class ModelRepository
     {
-
         public List<Instructor> Instructors { get; set; }
         public List<Course> Courses { get; set; }
         public List<Student> Students { get; set; }
         public List<Enrollment> Enrollments { get; set; }
+        private ModelRepository OldState { get; set; }
+
+        private static readonly Data _data = new Data();
 
         public static ModelRepository Build()
         {
             List<Instructor> instructors =
-                Data.GetInstructors(); 
+                _data.GetInstructors(); 
             List<Course> courses = 
                 BuildCourses(instructors);
             List<Student> students =
-                Data.GetStudents();
+                _data.GetStudents();
             List<Enrollment> enrollments =
                 BuildEnrollments(courses, students);
-            
+
 
             return new ModelRepository
             {
                 Instructors = instructors,
                 Courses = courses,
                 Students = students,
-                Enrollments = enrollments
+                Enrollments = enrollments,
+                OldState = new ModelRepository
+                {
+                    Instructors = instructors,
+                    Courses = courses,
+                    Students = students,
+                    Enrollments = enrollments
+                }
             };
         }
 
 
         private static List<Course> BuildCourses(List<Instructor> instructors)
         {
-            List<CourseFromDB> coursesFromDB = Data.GetCourses();
+            List<CourseFromDB> coursesFromDB = _data.GetCourses();
             return coursesFromDB.
                 Select(c => new Course {
                     Id = c.Id,
@@ -50,7 +59,7 @@ namespace TinyCollege.Utilities
 
         private static List<Enrollment> BuildEnrollments(List<Course> courses, List<Student> students)
         {
-            List<EnrollmentFromDB> enrollmentFromDB = Data.GetEnrollments();
+            List<EnrollmentFromDB> enrollmentFromDB = _data.GetEnrollments();
             return enrollmentFromDB.
                 Select(e => new Enrollment
                 {
@@ -63,8 +72,8 @@ namespace TinyCollege.Utilities
 
         public void Save()
         {
-            Data.SaveRepository(this);
+            _data.Create(this, OldState);
+            _data.Update(this);
         }
-
     }
 }

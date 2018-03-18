@@ -16,7 +16,7 @@ GO
 
 CREATE TABLE Instructor
 (
-           InstructorId		int				not null IDENTITY,
+           InstructorId		NVARCHAR(10)		not null,
            FirstName		NVARCHAR(20)	not null,
            LastName			NVARCHAR(20)	not null,
            CONSTRAINT pk_Instructor PRIMARY KEY (InstructorId)
@@ -24,7 +24,7 @@ CREATE TABLE Instructor
 
 CREATE TABLE Student
 (
-           StudentId		int				not null IDENTITY,
+           StudentId		NVARCHAR(10)		not null,
            FirstName		NVARCHAR(20)	not null,
            LastName			NVARCHAR(20)	not null,
            CONSTRAINT pk_Student PRIMARY KEY (StudentId)
@@ -32,34 +32,20 @@ CREATE TABLE Student
 
 CREATE TABLE Course
 (
-           CourseId			nvarchar(15)	not null, --should this be identity and should this be a string
+           CourseId			nvarchar(6)		not null, 
            CourseName		NVARCHAR(100)	not null,
            SeatAvailable	int				not null,
-		   InstructorId		int				not	null
+		   InstructorId		NVARCHAR(10)		not	null
            CONSTRAINT pk_Course PRIMARY KEY (CourseId)
 		   CONSTRAINT fk_Course_Instructor FOREIGN KEY (InstructorId) REFERENCES Instructor(InstructorId)
 );
 
 CREATE TABLE Enrollment
 (
-           StudentId		int				not null,
-		   CourseId			nvarchar(15)	not	null,
-		   Grade			decimal(3,2)	null,
+           StudentId		nvarchar(10)			not null,
+		   CourseId			nvarchar(6)			not	null,
+		   Grade			decimal(3,2)		null,
 		   CONSTRAINT fk_Enrollment_Student FOREIGN KEY (StudentId) REFERENCES Student(StudentId),
 		   CONSTRAINT fk_Enrollment_Course FOREIGN KEY (CourseId) REFERENCES Course(CourseID)
 );
 
---insert into Instructor(FirstName, LastName)
---	values('Josh', 'Morrison');
---insert into Student(FirstName, LastName)
---	values('Cole', 'Hargis');
---insert into Course(CourseId, CourseName, SeatAvailable, InstructorId)
---	values('CISS176', 'Intro to Comp Science', 25, 1);
---insert into Enrollment(StudentId, CourseId, Grade)
---	values(1, 'CISS176', 3.8);
-
-
---select * from Instructor;
---select * from Student;
---select * from Course;
---select * from Enrollment;

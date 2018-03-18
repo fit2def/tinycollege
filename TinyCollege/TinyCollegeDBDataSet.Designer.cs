@@ -569,17 +569,18 @@ namespace TinyCollege {
                 base.Columns.Add(this.columnCourseName);
                 this.columnSeatAvailable = new global::System.Data.DataColumn("SeatAvailable", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSeatAvailable);
-                this.columnInstructorId = new global::System.Data.DataColumn("InstructorId", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnInstructorId = new global::System.Data.DataColumn("InstructorId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInstructorId);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCourseId}, true));
                 this.columnCourseId.AllowDBNull = false;
                 this.columnCourseId.Unique = true;
-                this.columnCourseId.MaxLength = 15;
+                this.columnCourseId.MaxLength = 6;
                 this.columnCourseName.AllowDBNull = false;
                 this.columnCourseName.MaxLength = 100;
                 this.columnSeatAvailable.AllowDBNull = false;
                 this.columnInstructorId.AllowDBNull = false;
+                this.columnInstructorId.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -855,15 +856,16 @@ namespace TinyCollege {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnStudentId = new global::System.Data.DataColumn("StudentId", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnStudentId = new global::System.Data.DataColumn("StudentId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStudentId);
                 this.columnCourseId = new global::System.Data.DataColumn("CourseId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCourseId);
                 this.columnGrade = new global::System.Data.DataColumn("Grade", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnGrade);
                 this.columnStudentId.AllowDBNull = false;
+                this.columnStudentId.MaxLength = 10;
                 this.columnCourseId.AllowDBNull = false;
-                this.columnCourseId.MaxLength = 15;
+                this.columnCourseId.MaxLength = 6;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1097,10 +1099,10 @@ namespace TinyCollege {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public InstructorRow AddInstructorRow(string FirstName, string LastName) {
+            public InstructorRow AddInstructorRow(string InstructorId, string FirstName, string LastName) {
                 InstructorRow rowInstructorRow = ((InstructorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        InstructorId,
                         FirstName,
                         LastName};
                 rowInstructorRow.ItemArray = columnValuesArray;
@@ -1110,7 +1112,7 @@ namespace TinyCollege {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public InstructorRow FindByInstructorId(int InstructorId) {
+            public InstructorRow FindByInstructorId(string InstructorId) {
                 return ((InstructorRow)(this.Rows.Find(new object[] {
                             InstructorId})));
             }
@@ -1140,7 +1142,7 @@ namespace TinyCollege {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnInstructorId = new global::System.Data.DataColumn("InstructorId", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnInstructorId = new global::System.Data.DataColumn("InstructorId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnInstructorId);
                 this.columnFirstName = new global::System.Data.DataColumn("FirstName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFirstName);
@@ -1148,12 +1150,9 @@ namespace TinyCollege {
                 base.Columns.Add(this.columnLastName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnInstructorId}, true));
-                this.columnInstructorId.AutoIncrement = true;
-                this.columnInstructorId.AutoIncrementSeed = -1;
-                this.columnInstructorId.AutoIncrementStep = -1;
                 this.columnInstructorId.AllowDBNull = false;
-                this.columnInstructorId.ReadOnly = true;
                 this.columnInstructorId.Unique = true;
+                this.columnInstructorId.MaxLength = 10;
                 this.columnFirstName.AllowDBNull = false;
                 this.columnFirstName.MaxLength = 20;
                 this.columnLastName.AllowDBNull = false;
@@ -1391,10 +1390,10 @@ namespace TinyCollege {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public StudentRow AddStudentRow(string FirstName, string LastName) {
+            public StudentRow AddStudentRow(string StudentId, string FirstName, string LastName) {
                 StudentRow rowStudentRow = ((StudentRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        StudentId,
                         FirstName,
                         LastName};
                 rowStudentRow.ItemArray = columnValuesArray;
@@ -1404,7 +1403,7 @@ namespace TinyCollege {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public StudentRow FindByStudentId(int StudentId) {
+            public StudentRow FindByStudentId(string StudentId) {
                 return ((StudentRow)(this.Rows.Find(new object[] {
                             StudentId})));
             }
@@ -1434,7 +1433,7 @@ namespace TinyCollege {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             private void InitClass() {
-                this.columnStudentId = new global::System.Data.DataColumn("StudentId", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnStudentId = new global::System.Data.DataColumn("StudentId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnStudentId);
                 this.columnFirstName = new global::System.Data.DataColumn("FirstName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFirstName);
@@ -1442,12 +1441,9 @@ namespace TinyCollege {
                 base.Columns.Add(this.columnLastName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnStudentId}, true));
-                this.columnStudentId.AutoIncrement = true;
-                this.columnStudentId.AutoIncrementSeed = -1;
-                this.columnStudentId.AutoIncrementStep = -1;
                 this.columnStudentId.AllowDBNull = false;
-                this.columnStudentId.ReadOnly = true;
                 this.columnStudentId.Unique = true;
+                this.columnStudentId.MaxLength = 10;
                 this.columnFirstName.AllowDBNull = false;
                 this.columnFirstName.MaxLength = 20;
                 this.columnLastName.AllowDBNull = false;
@@ -1627,9 +1623,9 @@ namespace TinyCollege {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int InstructorId {
+            public string InstructorId {
                 get {
-                    return ((int)(this[this.tableCourse.InstructorIdColumn]));
+                    return ((string)(this[this.tableCourse.InstructorIdColumn]));
                 }
                 set {
                     this[this.tableCourse.InstructorIdColumn] = value;
@@ -1675,9 +1671,9 @@ namespace TinyCollege {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int StudentId {
+            public string StudentId {
                 get {
-                    return ((int)(this[this.tableEnrollment.StudentIdColumn]));
+                    return ((string)(this[this.tableEnrollment.StudentIdColumn]));
                 }
                 set {
                     this[this.tableEnrollment.StudentIdColumn] = value;
@@ -1762,9 +1758,9 @@ namespace TinyCollege {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int InstructorId {
+            public string InstructorId {
                 get {
-                    return ((int)(this[this.tableInstructor.InstructorIdColumn]));
+                    return ((string)(this[this.tableInstructor.InstructorIdColumn]));
                 }
                 set {
                     this[this.tableInstructor.InstructorIdColumn] = value;
@@ -1821,9 +1817,9 @@ namespace TinyCollege {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int StudentId {
+            public string StudentId {
                 get {
-                    return ((int)(this[this.tableStudent.StudentIdColumn]));
+                    return ((string)(this[this.tableStudent.StudentIdColumn]));
                 }
                 set {
                     this[this.tableStudent.StudentIdColumn] = value;
@@ -2139,7 +2135,7 @@ namespace TinyCollege.TinyCollegeDBDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CourseId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CourseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CourseName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CourseName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SeatAvailable", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SeatAvailable", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Course] ([CourseId], [CourseName], [SeatAvailable], [Instructo" +
@@ -2150,7 +2146,7 @@ namespace TinyCollege.TinyCollegeDBDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CourseId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CourseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CourseName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CourseName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SeatAvailable", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SeatAvailable", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Course] SET [CourseId] = @CourseId, [CourseName] = @CourseName, [SeatAvailable] = @SeatAvailable, [InstructorId] = @InstructorId WHERE (([CourseId] = @Original_CourseId) AND ([CourseName] = @Original_CourseName) AND ([SeatAvailable] = @Original_SeatAvailable) AND ([InstructorId] = @Original_InstructorId));
@@ -2159,11 +2155,11 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CourseId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CourseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CourseName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CourseName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@SeatAvailable", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SeatAvailable", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CourseId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CourseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CourseName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CourseName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_SeatAvailable", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "SeatAvailable", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2240,7 +2236,7 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_CourseId, string Original_CourseName, int Original_SeatAvailable, int Original_InstructorId) {
+        public virtual int Delete(string Original_CourseId, string Original_CourseName, int Original_SeatAvailable, string Original_InstructorId) {
             if ((Original_CourseId == null)) {
                 throw new global::System.ArgumentNullException("Original_CourseId");
             }
@@ -2254,7 +2250,12 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_CourseName));
             }
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_SeatAvailable));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_InstructorId));
+            if ((Original_InstructorId == null)) {
+                throw new global::System.ArgumentNullException("Original_InstructorId");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_InstructorId));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2275,7 +2276,7 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string CourseId, string CourseName, int SeatAvailable, int InstructorId) {
+        public virtual int Insert(string CourseId, string CourseName, int SeatAvailable, string InstructorId) {
             if ((CourseId == null)) {
                 throw new global::System.ArgumentNullException("CourseId");
             }
@@ -2289,7 +2290,12 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
                 this.Adapter.InsertCommand.Parameters[1].Value = ((string)(CourseName));
             }
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(SeatAvailable));
-            this.Adapter.InsertCommand.Parameters[3].Value = ((int)(InstructorId));
+            if ((InstructorId == null)) {
+                throw new global::System.ArgumentNullException("InstructorId");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(InstructorId));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2310,7 +2316,7 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string CourseId, string CourseName, int SeatAvailable, int InstructorId, string Original_CourseId, string Original_CourseName, int Original_SeatAvailable, int Original_InstructorId) {
+        public virtual int Update(string CourseId, string CourseName, int SeatAvailable, string InstructorId, string Original_CourseId, string Original_CourseName, int Original_SeatAvailable, string Original_InstructorId) {
             if ((CourseId == null)) {
                 throw new global::System.ArgumentNullException("CourseId");
             }
@@ -2324,7 +2330,12 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
                 this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(CourseName));
             }
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(SeatAvailable));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(InstructorId));
+            if ((InstructorId == null)) {
+                throw new global::System.ArgumentNullException("InstructorId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(InstructorId));
+            }
             if ((Original_CourseId == null)) {
                 throw new global::System.ArgumentNullException("Original_CourseId");
             }
@@ -2338,7 +2349,12 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_CourseName));
             }
             this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_SeatAvailable));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_InstructorId));
+            if ((Original_InstructorId == null)) {
+                throw new global::System.ArgumentNullException("Original_InstructorId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_InstructorId));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2359,7 +2375,7 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string CourseName, int SeatAvailable, int InstructorId, string Original_CourseId, string Original_CourseName, int Original_SeatAvailable, int Original_InstructorId) {
+        public virtual int Update(string CourseName, int SeatAvailable, string InstructorId, string Original_CourseId, string Original_CourseName, int Original_SeatAvailable, string Original_InstructorId) {
             return this.Update(Original_CourseId, CourseName, SeatAvailable, InstructorId, Original_CourseId, Original_CourseName, Original_SeatAvailable, Original_InstructorId);
         }
     }
@@ -2494,7 +2510,7 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
             this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Enrollment] ([StudentId], [CourseId], [Grade]) VALUES (@Studen" +
                 "tId, @CourseId, @Grade)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CourseId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CourseId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Grade", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 3, 2, "Grade", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -2573,8 +2589,13 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int StudentId, string CourseId, global::System.Nullable<decimal> Grade) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(StudentId));
+        public virtual int Insert(string StudentId, string CourseId, global::System.Nullable<decimal> Grade) {
+            if ((StudentId == null)) {
+                throw new global::System.ArgumentNullException("StudentId");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(StudentId));
+            }
             if ((CourseId == null)) {
                 throw new global::System.ArgumentNullException("CourseId");
             }
@@ -2734,28 +2755,29 @@ SELECT CourseId, CourseName, SeatAvailable, InstructorId FROM Course WHERE (Cour
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Instructor] WHERE (([InstructorId] = @Original_InstructorId) A" +
                 "ND ([FirstName] = @Original_FirstName) AND ([LastName] = @Original_LastName))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Instructor] ([FirstName], [LastName]) VALUES (@FirstName, @Las" +
-                "tName);\r\nSELECT InstructorId, FirstName, LastName FROM Instructor WHERE (Instruc" +
-                "torId = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Instructor] ([InstructorId], [FirstName], [LastName]) VALUES (" +
+                "@InstructorId, @FirstName, @LastName);\r\nSELECT InstructorId, FirstName, LastName" +
+                " FROM Instructor WHERE (InstructorId = @InstructorId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Instructor] SET [FirstName] = @FirstName, [LastName] = @LastName WHERE (([InstructorId] = @Original_InstructorId) AND ([FirstName] = @Original_FirstName) AND ([LastName] = @Original_LastName));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Instructor] SET [InstructorId] = @InstructorId, [FirstName] = @FirstName, [LastName] = @LastName WHERE (([InstructorId] = @Original_InstructorId) AND ([FirstName] = @Original_FirstName) AND ([LastName] = @Original_LastName));
 SELECT InstructorId, FirstName, LastName FROM Instructor WHERE (InstructorId = @InstructorId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_InstructorId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@InstructorId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "InstructorId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2832,8 +2854,13 @@ SELECT InstructorId, FirstName, LastName FROM Instructor WHERE (InstructorId = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_InstructorId, string Original_FirstName, string Original_LastName) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_InstructorId));
+        public virtual int Delete(string Original_InstructorId, string Original_FirstName, string Original_LastName) {
+            if ((Original_InstructorId == null)) {
+                throw new global::System.ArgumentNullException("Original_InstructorId");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_InstructorId));
+            }
             if ((Original_FirstName == null)) {
                 throw new global::System.ArgumentNullException("Original_FirstName");
             }
@@ -2866,18 +2893,24 @@ SELECT InstructorId, FirstName, LastName FROM Instructor WHERE (InstructorId = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string FirstName, string LastName) {
+        public virtual int Insert(string InstructorId, string FirstName, string LastName) {
+            if ((InstructorId == null)) {
+                throw new global::System.ArgumentNullException("InstructorId");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(InstructorId));
+            }
             if ((FirstName == null)) {
                 throw new global::System.ArgumentNullException("FirstName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(FirstName));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FirstName));
             }
             if ((LastName == null)) {
                 throw new global::System.ArgumentNullException("LastName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(LastName));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(LastName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -2899,33 +2932,43 @@ SELECT InstructorId, FirstName, LastName FROM Instructor WHERE (InstructorId = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string FirstName, string LastName, int Original_InstructorId, string Original_FirstName, string Original_LastName, int InstructorId) {
+        public virtual int Update(string InstructorId, string FirstName, string LastName, string Original_InstructorId, string Original_FirstName, string Original_LastName) {
+            if ((InstructorId == null)) {
+                throw new global::System.ArgumentNullException("InstructorId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(InstructorId));
+            }
             if ((FirstName == null)) {
                 throw new global::System.ArgumentNullException("FirstName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(FirstName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FirstName));
             }
             if ((LastName == null)) {
                 throw new global::System.ArgumentNullException("LastName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(LastName));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(LastName));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_InstructorId));
+            if ((Original_InstructorId == null)) {
+                throw new global::System.ArgumentNullException("Original_InstructorId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_InstructorId));
+            }
             if ((Original_FirstName == null)) {
                 throw new global::System.ArgumentNullException("Original_FirstName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_FirstName));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_FirstName));
             }
             if ((Original_LastName == null)) {
                 throw new global::System.ArgumentNullException("Original_LastName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_LastName));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_LastName));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(InstructorId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2946,8 +2989,8 @@ SELECT InstructorId, FirstName, LastName FROM Instructor WHERE (InstructorId = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string FirstName, string LastName, int Original_InstructorId, string Original_FirstName, string Original_LastName) {
-            return this.Update(FirstName, LastName, Original_InstructorId, Original_FirstName, Original_LastName, Original_InstructorId);
+        public virtual int Update(string FirstName, string LastName, string Original_InstructorId, string Original_FirstName, string Original_LastName) {
+            return this.Update(Original_InstructorId, FirstName, LastName, Original_InstructorId, Original_FirstName, Original_LastName);
         }
     }
     
@@ -3081,28 +3124,29 @@ SELECT InstructorId, FirstName, LastName FROM Instructor WHERE (InstructorId = @
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Student] WHERE (([StudentId] = @Original_StudentId) AND ([Firs" +
                 "tName] = @Original_FirstName) AND ([LastName] = @Original_LastName))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Student] ([FirstName], [LastName]) VALUES (@FirstName, @LastNa" +
-                "me);\r\nSELECT StudentId, FirstName, LastName FROM Student WHERE (StudentId = SCOP" +
-                "E_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Student] ([StudentId], [FirstName], [LastName]) VALUES (@Stude" +
+                "ntId, @FirstName, @LastName);\r\nSELECT StudentId, FirstName, LastName FROM Studen" +
+                "t WHERE (StudentId = @StudentId)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Student] SET [FirstName] = @FirstName, [LastName] = @LastName WHERE (([StudentId] = @Original_StudentId) AND ([FirstName] = @Original_FirstName) AND ([LastName] = @Original_LastName));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Student] SET [StudentId] = @StudentId, [FirstName] = @FirstName, [LastName] = @LastName WHERE (([StudentId] = @Original_StudentId) AND ([FirstName] = @Original_FirstName) AND ([LastName] = @Original_LastName));
 SELECT StudentId, FirstName, LastName FROM Student WHERE (StudentId = @StudentId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StudentId", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StudentId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FirstName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FirstName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_LastName", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "LastName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StudentId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StudentId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3179,8 +3223,13 @@ SELECT StudentId, FirstName, LastName FROM Student WHERE (StudentId = @StudentId
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_StudentId, string Original_FirstName, string Original_LastName) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_StudentId));
+        public virtual int Delete(string Original_StudentId, string Original_FirstName, string Original_LastName) {
+            if ((Original_StudentId == null)) {
+                throw new global::System.ArgumentNullException("Original_StudentId");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[0].Value = ((string)(Original_StudentId));
+            }
             if ((Original_FirstName == null)) {
                 throw new global::System.ArgumentNullException("Original_FirstName");
             }
@@ -3213,18 +3262,24 @@ SELECT StudentId, FirstName, LastName FROM Student WHERE (StudentId = @StudentId
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string FirstName, string LastName) {
+        public virtual int Insert(string StudentId, string FirstName, string LastName) {
+            if ((StudentId == null)) {
+                throw new global::System.ArgumentNullException("StudentId");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(StudentId));
+            }
             if ((FirstName == null)) {
                 throw new global::System.ArgumentNullException("FirstName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(FirstName));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(FirstName));
             }
             if ((LastName == null)) {
                 throw new global::System.ArgumentNullException("LastName");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(LastName));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(LastName));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3246,33 +3301,43 @@ SELECT StudentId, FirstName, LastName FROM Student WHERE (StudentId = @StudentId
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string FirstName, string LastName, int Original_StudentId, string Original_FirstName, string Original_LastName, int StudentId) {
+        public virtual int Update(string StudentId, string FirstName, string LastName, string Original_StudentId, string Original_FirstName, string Original_LastName) {
+            if ((StudentId == null)) {
+                throw new global::System.ArgumentNullException("StudentId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(StudentId));
+            }
             if ((FirstName == null)) {
                 throw new global::System.ArgumentNullException("FirstName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(FirstName));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(FirstName));
             }
             if ((LastName == null)) {
                 throw new global::System.ArgumentNullException("LastName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(LastName));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(LastName));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_StudentId));
+            if ((Original_StudentId == null)) {
+                throw new global::System.ArgumentNullException("Original_StudentId");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_StudentId));
+            }
             if ((Original_FirstName == null)) {
                 throw new global::System.ArgumentNullException("Original_FirstName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_FirstName));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_FirstName));
             }
             if ((Original_LastName == null)) {
                 throw new global::System.ArgumentNullException("Original_LastName");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_LastName));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_LastName));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(StudentId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3293,8 +3358,8 @@ SELECT StudentId, FirstName, LastName FROM Student WHERE (StudentId = @StudentId
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string FirstName, string LastName, int Original_StudentId, string Original_FirstName, string Original_LastName) {
-            return this.Update(FirstName, LastName, Original_StudentId, Original_FirstName, Original_LastName, Original_StudentId);
+        public virtual int Update(string FirstName, string LastName, string Original_StudentId, string Original_FirstName, string Original_LastName) {
+            return this.Update(Original_StudentId, FirstName, LastName, Original_StudentId, Original_FirstName, Original_LastName);
         }
     }
     

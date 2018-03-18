@@ -1,105 +1,51 @@
 ﻿using System.Collections.Generic;
 using TinyCollege.Models;
-using System.Data.SqlClient;
 using System.Configuration;
-using System.Data;
-using System;
 
 namespace TinyCollege.Utilities
 {
 
-    public static class Data
+    public class Data
     {
+        private readonly string connectionString;
+        private readonly DataGetter _get;
+        private readonly DataPoster _post;
 
-        static string connectionString = ConfigurationManager
-        .ConnectionStrings["TinyCollege.Properties.Settings.TinyCollegeDBConnectionString"]
-        .ConnectionString;
-
-
-        public static List<Instructor> GetInstructors()
+        public Data()
         {
-            DataTable table = GetDataTable("Instructors");
-            return CompileInstructors(table);
+            string _connectionString = BuildConnectionString();
+            _get = new DataGetter(_connectionString);
+            _post = new DataPoster(_connectionString);
         }
 
-        private static List<Instructor> CompileInstructors(DataTable table)
+        private string BuildConnectionString() =>
+            ConfigurationManager
+            .ConnectionStrings["TinyCollege.Properties.Settings.TinyCollegeDBConnectionString"]
+            .ConnectionString;
+
+        public List<Instructor> GetInstructors() => _get.Instructors();
+        public List<Student> GetStudents() => _get.Students();
+        public List<CourseFromDB> GetCourses() => _get.Courses();
+        public List<EnrollmentFromDB> GetEnrollments() => _get.Enrollments();
+
+
+        public void Create(ModelRepository repo, ModelRepository oldState)
         {
-            throw new NotImplementedException();
+            _post.CreateInstructors(repo.Instructors, oldState.Instructors);
+            _post.CreateStudents(repo.Students, oldState.Students);
+            _post.CreateCourses(repo.Courses, oldState.Courses);
+            _post.CreateEnrollments(repo.Enrollments, oldState.Enrollments);
         }
 
-        public static List<CourseFromDB> GetCourses()
-        {
-            DataTable table = GetDataTable("Courses");
-            return CompileCourses(table);
-        }
+        public void Update(ModelRepository repo) => _post.UpdateRepository(repo);
+        
 
-        private static List<CourseFromDB> CompileCourses(DataTable table)
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        public static List<Student> GetStudents()
-        {
-            DataTable table = GetDataTable("Students");
-            return CompileStudents(table);
-        }
+        
 
-        private static List<Student> CompileStudents(DataTable table)
-        {
-            throw new NotImplementedException();
-        }
+        
 
-        public static List<EnrollmentFromDB> GetEnrollments()
-        {
-            DataTable table = GetDataTable("Enrollments");
-            return CompileEnrollments(table);
-        }
-
-        private static List<EnrollmentFromDB> CompileEnrollments(DataTable table)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static DataTable GetDataTable(string target)
-        {
-            using (var conn = new SqlConnection(connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ($"Select * from {target}", conn))
-            using (SqlDataAdapter adapter = new SqlDataAdapter(comd))
-            {
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-                return table;
-            }
-        }
- 
-        public static void SaveRepository(ModelRepository repo)
-        {
-            SaveInstructors(repo.Instructors);
-            SaveCourses(repo.Courses);
-            SaveStudents(repo.Students);
-            SaveEnrollments(repo.Enrollments);
-        }
-
-        private static void SaveInstructors(List<Instructor> instructors)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void SaveCourses(List<Course> courses)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void SaveStudents(List<Student> students)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void SaveEnrollments(List<Enrollment> enrollments)
-        {
-            throw new NotImplementedException();
-        }
-
+        
     }
 }

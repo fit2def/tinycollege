@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Windows.Forms;
-
+using TinyCollege.Utilities;
 
 namespace TinyCollege.Admins
 {
     public partial class AdminPortalForm : Form
     {
-        public AdminPortalForm()
+        private readonly ModelRepository _repo;
+
+        public AdminPortalForm(Utilities.ModelRepository repo)
         {
             InitializeComponent();
+            _repo = repo;
         }
 
         private void instructorButton_Click(object sender, EventArgs e)

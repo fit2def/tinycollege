@@ -7,14 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TinyCollege.Utilities;
 
 namespace TinyCollege.Students
 {
     public partial class ViewCoursesForm : Form
     {
-        public ViewCoursesForm()
+        private readonly ModelRepository _repo;
+
+        public ViewCoursesForm(ModelRepository repo)
         {
             InitializeComponent();
+            _repo = repo;
         }
 
         private void ViewCoursesForm_Load(object sender, EventArgs e)
