@@ -16,7 +16,7 @@ namespace TinyCollege.Utilities
 
         public List<Instructor> Instructors()
         {
-            DataTable table = GetDataTable("Instructors");
+            DataTable table = GetDataTable("Instructor");
             return CompileInstructors(table);
         }
 
@@ -43,7 +43,7 @@ namespace TinyCollege.Utilities
 
         public List<CourseFromDB> Courses()
         {
-            DataTable table = GetDataTable("Courses");
+            DataTable table = GetDataTable("Course");
             return CompileCourses(table);
         }
 
@@ -71,7 +71,7 @@ namespace TinyCollege.Utilities
 
         public List<Student> Students()
         {
-            DataTable table = GetDataTable("Students");
+            DataTable table = GetDataTable("Student");
             return CompileStudents(table);
         }
 
@@ -98,7 +98,7 @@ namespace TinyCollege.Utilities
 
         public List<EnrollmentFromDB> Enrollments()
         {
-            DataTable table = GetDataTable("Enrollments");
+            DataTable table = GetDataTable("Enrollment");
             return CompileEnrollments(table);
         }
 
