@@ -114,6 +114,8 @@
       <DependentUpon>TinyCollegeDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Utilities\Data.cs" />
+    <Compile Include="Utilities\DataGetter.cs" />
+    <Compile Include="Utilities\DataPoster.cs" />
     <Compile Include="Utilities\ModelRepository.cs" />
     <EmbeddedResource Include="Admins\AdminPortalForm.resx">
       <DependentUpon>AdminPortalForm.cs</DependentUpon>

@@ -8,7 +8,7 @@ namespace TinyCollege.Admins
     {
         private readonly ModelRepository _repo;
 
-        public AdminPortalForm(Utilities.ModelRepository repo)
+        public AdminPortalForm(ModelRepository repo)
         {
             InitializeComponent();
             _repo = repo;
@@ -16,19 +16,19 @@ namespace TinyCollege.Admins
 
         private void instructorButton_Click(object sender, EventArgs e)
         {
-            AddInstructorForm form = new AddInstructorForm();
+            AddInstructorForm form = new AddInstructorForm(_repo);
             form.ShowDialog();
         }
 
         private void studentButton_Click(object sender, EventArgs e)
         {
-            AddStudentForm form = new AddStudentForm();
+            AddStudentForm form = new AddStudentForm(_repo);
             form.ShowDialog();
         }
 
         private void courseButton_Click(object sender, EventArgs e)
         {
-            AddCourseForm form = new AddCourseForm();
+            AddCourseForm form = new AddCourseForm(_repo);
             form.ShowDialog();
         }
 

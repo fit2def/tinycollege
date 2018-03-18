@@ -17,12 +17,12 @@ namespace TinyCollege.Students
 
         private void registerButton_Click(object sender, EventArgs e)
         {
-            RegisterForm form = new RegisterForm();
+            RegisterForm form = new RegisterForm(_repo);
             form.ShowDialog();
         }
         private void viewButton_Click(object sender, EventArgs e)
         {
-            ViewCoursesForm form = new ViewCoursesForm();
+            ViewCoursesForm form = new ViewCoursesForm(_repo);
             form.ShowDialog();
         }
 
