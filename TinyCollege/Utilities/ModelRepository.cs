@@ -34,10 +34,10 @@ namespace TinyCollege.Utilities
                 Enrollments = enrollments,
                 OldState = new ModelRepository
                 {
-                    Instructors = instructors,
-                    Courses = courses,
-                    Students = students,
-                    Enrollments = enrollments
+                    Instructors = new List<Instructor>(instructors),
+                    Courses = new List<Course>(courses),
+                    Students = new List<Student>(students),
+                    Enrollments = new List<Enrollment>(enrollments)
                 }
             };
         }

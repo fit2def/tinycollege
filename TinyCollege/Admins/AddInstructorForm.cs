@@ -27,7 +27,16 @@ namespace TinyCollege.Admins
             {
                 Instructor instructor = BuildInstructor();
                 _repo.Instructors.Add(instructor);
-            }     
+                MessageBox.Show("Instructor added.");
+            }
+            ClearInputs();
+        }
+
+        private void ClearInputs()
+        {
+            idBox.Text = string.Empty;
+            firstBox.Text = string.Empty;
+            lastBox.Text = string.Empty;
         }
 
         private bool ValidInputs() =>
@@ -75,7 +84,11 @@ namespace TinyCollege.Admins
             foreach (Instructor i in _repo.Instructors)
             {
                 if (i.Id == idBox.Text)
+                {
                     newInstructor = false;
+                    MessageBox.Show("Instructor with that ID already exists.");
+                }
+                    
             }
             return newInstructor;
         }

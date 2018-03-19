@@ -14,9 +14,11 @@ USE TinyCollegeDB;
 
 GO
 
+
+
 CREATE TABLE Instructor
 (
-           InstructorId		NVARCHAR(10)		not null,
+           InstructorId		NVARCHAR(10)	not null,
            FirstName		NVARCHAR(20)	not null,
            LastName			NVARCHAR(20)	not null,
            CONSTRAINT pk_Instructor PRIMARY KEY (InstructorId)
@@ -35,14 +37,15 @@ CREATE TABLE Course
            CourseId			nvarchar(6)		not null, 
            CourseName		NVARCHAR(100)	not null,
            SeatAvailable	int				not null,
-		   InstructorId		NVARCHAR(10)		not	null
-           CONSTRAINT pk_Course PRIMARY KEY (CourseId)
+		   Active			bit			not null,
+		   InstructorId		NVARCHAR(10)	not	null,
+           CONSTRAINT pk_Course PRIMARY KEY (CourseId),
 		   CONSTRAINT fk_Course_Instructor FOREIGN KEY (InstructorId) REFERENCES Instructor(InstructorId)
 );
 
 CREATE TABLE Enrollment
 (
-           StudentId		nvarchar(10)			not null,
+           StudentId		nvarchar(10)		not null,
 		   CourseId			nvarchar(6)			not	null,
 		   Grade			decimal(3,2)		null,
 		   CONSTRAINT fk_Enrollment_Student FOREIGN KEY (StudentId) REFERENCES Student(StudentId),
