@@ -67,7 +67,7 @@ namespace TinyCollege.Utilities
             course.SeatsAvailable = int.Parse(r["SeatAvailable"].ToString());
             course.InstructorId = r["InstructorId"].ToString();
             string bit = r["Active"].ToString();
-            course.IsActive = bit == "1" ? true : false;
+            course.IsActive = bit == "True" ? true : false;
             return course;
         }
 
