@@ -7,5 +7,9 @@
         public int SeatsAvailable { get; set; }
         public Instructor Instructor { get; set; }
         public bool IsActive { get; set; }
+        public override string ToString()
+        {
+            return $"{Id} - {Name} : {Instructor.FirstName + Instructor.LastName}";
+        }
     }
 }

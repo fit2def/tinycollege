@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using TinyCollege.Models;
 
@@ -267,11 +266,12 @@ namespace TinyCollege.Utilities
         private void UpdateEnrollment(Enrollment enrollment, SqlConnection conn)
         {
             using (SqlCommand comd = new SqlCommand
-                ($"update Enrollment set Grade = @{enrollment.Course.Id + enrollment.Student + "ug" } +  where CourseId = @{enrollment.Course.Id + "e"} and StudentId = @{enrollment.Student + "e"}", conn))
+                ($"update Enrollment set Grade = @{enrollment.Course.Id + enrollment.Student.Id + "ug" }" 
+                + $" where CourseId = @{enrollment.Course.Id + "ec"} and StudentId = @{enrollment.Student.Id + "es"}", conn))
             {
-                comd.Parameters.AddWithValue($"@{enrollment.Course.Id + "e"}", enrollment.Course.Id);
-                comd.Parameters.AddWithValue($"@{enrollment.Student + "e"}", enrollment.Student.Id);
-                comd.Parameters.AddWithValue($"@{enrollment.Course.Id + enrollment.Student + "ug" }", enrollment.Grade);
+                comd.Parameters.AddWithValue($"@{enrollment.Course.Id + "ec"}", enrollment.Course.Id);
+                comd.Parameters.AddWithValue($"@{enrollment.Student.Id + "es"}", enrollment.Student.Id);
+                comd.Parameters.AddWithValue($"@{enrollment.Course.Id + enrollment.Student.Id + "ug" }", enrollment.Grade);
                 comd.ExecuteScalar();
             }
             

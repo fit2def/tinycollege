@@ -51,7 +51,8 @@ namespace TinyCollege.Utilities
                     Id = c.Id,
                     Instructor = instructors.FirstOrDefault(i => i.Id == c.InstructorId),
                     Name = c.Name,
-                    SeatsAvailable = c.SeatsAvailable
+                    SeatsAvailable = c.SeatsAvailable,
+                    IsActive = c.IsActive
                 })
                 .ToList();
         }

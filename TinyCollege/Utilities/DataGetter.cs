@@ -121,7 +121,10 @@ namespace TinyCollege.Utilities
             EnrollmentFromDB enrollment = new EnrollmentFromDB();
             enrollment.StudentId = r["StudentId"].ToString();
             enrollment.CourseId = r["CourseId"].ToString();
-            enrollment.Grade = double.Parse(r["Grade"].ToString());
+            double grade;
+            bool gradeEntered = double.TryParse(r["Grade"].ToString(), out grade);
+            if (gradeEntered)
+                enrollment.Grade = grade;
             return enrollment;
         }
 
