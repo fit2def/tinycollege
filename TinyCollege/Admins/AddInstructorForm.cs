@@ -83,7 +83,7 @@ namespace TinyCollege.Admins
             bool newInstructor = true;
             foreach (Instructor i in _repo.Instructors)
             {
-                if (i.Id == idBox.Text)
+                if (i.Id.ToLowerInvariant() == idBox.Text.ToLowerInvariant())
                 {
                     newInstructor = false;
                     MessageBox.Show("Instructor with that ID already exists.");
@@ -98,7 +98,8 @@ namespace TinyCollege.Admins
             {
                 Id = idBox.Text,
                 FirstName = firstBox.Text,
-                LastName = lastBox.Text
+                LastName = lastBox.Text,
+                
             };
     }
 }

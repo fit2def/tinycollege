@@ -64,8 +64,10 @@ namespace TinyCollege.Utilities
             CourseFromDB course = new CourseFromDB();
             course.Id = r["CourseId"].ToString();
             course.Name = r["CourseName"].ToString();
-            course.SeatsAvailable = int.Parse(r["SeatsAvailable"].ToString());
-            course.InstructorId = r["InstuctorId"].ToString();
+            course.SeatsAvailable = int.Parse(r["SeatAvailable"].ToString());
+            course.InstructorId = r["InstructorId"].ToString();
+            string bit = r["Active"].ToString();
+            course.IsActive = bit == "1" ? true : false;
             return course;
         }
 

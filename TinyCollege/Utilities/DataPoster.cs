@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using TinyCollege.Models;
 
@@ -40,25 +41,27 @@ namespace TinyCollege.Utilities
         private void InsertInstructors(List<Instructor> instructors)
         {
             using (var conn = new SqlConnection(_connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ($"insert into Instructor (InstructorId, FirstName, LastName)" +
-                $" values (@Id, @FirstName, @LastName);", conn))
             {
                 conn.Open();
                 foreach (Instructor instructor in instructors)
                 {
-                    InsertInstructor(comd, instructor);
+                    InsertInstructor(instructor, conn);
                 }
                 conn.Close();
             }
+
         }
 
-        private void InsertInstructor(SqlCommand comd, Instructor instructor)
+        private void InsertInstructor(Instructor instructor, SqlConnection conn)
         {
-            comd.Parameters.AddWithValue("@Id", instructor.Id);
-            comd.Parameters.AddWithValue("@FirstName", instructor.FirstName);
-            comd.Parameters.AddWithValue("@LastName", instructor.LastName);
-            comd.ExecuteScalar();
+            using (SqlCommand comd = new SqlCommand($"insert into Instructor (InstructorId, FirstName, LastName)" +
+                    $" values (@{instructor.Id}, @{instructor.Id + "f"}, @{instructor.Id + "l"});", conn))
+            {
+                comd.Parameters.AddWithValue($"@{instructor.Id}", instructor.Id);
+                comd.Parameters.AddWithValue($"@{instructor.Id + "f"}", instructor.FirstName);
+                comd.Parameters.AddWithValue($"@{instructor.Id + "l"}", instructor.LastName);
+                comd.ExecuteScalar();
+            }
         }
 
         public void CreateStudents(List<Student> students, List<Student> oldStudents)
@@ -88,25 +91,27 @@ namespace TinyCollege.Utilities
         private void InsertStudents(List<Student> students)
         {
             using (var conn = new SqlConnection(_connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ($"insert into Student (StudentId, FirstName, LastName)" +
-                $" values (@Id, @FirstName, @LastName);", conn))
             {
                 conn.Open();
                 foreach (Student student in students)
                 {
-                    InsertStudent(comd, student);
+                    InsertStudent(student, conn);
                 }
                 conn.Close();
             }
         }
 
-        private void InsertStudent(SqlCommand comd, Student student)
+        private void InsertStudent(Student student, SqlConnection conn)
         {
-            comd.Parameters.AddWithValue("@Id", student.Id);
-            comd.Parameters.AddWithValue("@FirstName", student.FirstName);
-            comd.Parameters.AddWithValue("@LastName", student.LastName);
-            comd.ExecuteScalar();
+            using (SqlCommand comd = new SqlCommand
+                ($"insert into Student (StudentId, FirstName, LastName)" +
+                $" values (@{student.Id}, @{student.Id + "f"}, @{student.Id + "l"});", conn))
+            {
+                comd.Parameters.AddWithValue($"@{student.Id}", student.Id);
+                comd.Parameters.AddWithValue($"@{student.Id + "f"}", student.FirstName);
+                comd.Parameters.AddWithValue($"@{student.Id + "l"}", student.LastName);
+                comd.ExecuteScalar();
+            }
         }
 
         public void CreateCourses(List<Course> courses1, List<Course> courses2)
@@ -136,25 +141,31 @@ namespace TinyCollege.Utilities
         private void InsertCourses(List<Course> courses)
         {
             using (var conn = new SqlConnection(_connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ($"insert into Course (CourseId, CourseName, SeatsAvailable, InstructorId)" +
-                $" values (@id, @name, @seats, @instructorId);", conn))
             {
                 conn.Open();
                 foreach (Course course in courses)
                 {
-                    InsertCourse(comd, course);
+                    InsertCourse(course, conn);
                 }
                 conn.Close();
             }
+
         }
 
-        private void InsertCourse(SqlCommand comd, Course course)
+        private void InsertCourse(Course course, SqlConnection conn)
         {
-            comd.Parameters.AddWithValue("@id", course.Id);
-            comd.Parameters.AddWithValue("@name", course.Name);
-            comd.Parameters.AddWithValue("@seats", course.SeatsAvailable);
-            comd.Parameters.AddWithValue("@instructorId", course.Instructor.Id);
+            using (SqlCommand comd = new SqlCommand
+               ($"insert into Course (CourseId, CourseName, SeatAvailable, Active, InstructorId)" +
+               $" values (@{course.Id}, @{course.Id + "n"}, @{course.Id + "s"}, @{course.Id + "a"}, @{course.Id + "i"});", conn))
+            {
+                comd.Parameters.AddWithValue($"@{course.Id}", course.Id);
+                comd.Parameters.AddWithValue($"@{course.Id + "n"}", course.Name);
+                comd.Parameters.AddWithValue($"@{course.Id + "s"}", course.SeatsAvailable);
+                comd.Parameters.AddWithValue($"@{course.Id + "a"}", course.IsActive ? 1 : 0);
+                comd.Parameters.AddWithValue($"@{course.Id + "i"}", course.Instructor.Id);
+                comd.ExecuteScalar();
+            }
+
         }
 
         public void CreateEnrollments(List<Enrollment> enrollments1, List<Enrollment> enrollments2)
@@ -184,76 +195,86 @@ namespace TinyCollege.Utilities
         private void InsertEnrollments(List<Enrollment> newEnrollments)
         {
             using (var conn = new SqlConnection(_connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ($"insert into Enrollment (CourseId, StudentId) " +
-                $" values (@courseId, @studentId);", conn))
             {
                 conn.Open();
                 foreach (Enrollment enrollment in newEnrollments)
                 {
-                    InsertEnrollment(comd, enrollment);
+                    InsertEnrollment(enrollment, conn);
                 }
                 conn.Close();
             }
+
         }
 
-        private void InsertEnrollment(SqlCommand comd, Enrollment enrollment)
+        private void InsertEnrollment(Enrollment enrollment, SqlConnection conn)
         {
-            comd.Parameters.AddWithValue("@courseId", enrollment.Course.Id);
-            comd.Parameters.AddWithValue("@studentId", enrollment.Student.Id);
-            comd.ExecuteScalar();
+            using (SqlCommand comd = new SqlCommand
+                ($"insert into Enrollment (CourseId, StudentId) " +
+                $" values (@{enrollment.Course.Id + enrollment.Student.Id + "c"}, @{enrollment.Student.Id + enrollment.Course.Id + "s"});", conn))
+            {
+                comd.Parameters.AddWithValue($"@{enrollment.Course.Id + enrollment.Student.Id + "c"}", enrollment.Course.Id);
+                comd.Parameters.AddWithValue($"@{enrollment.Student.Id + enrollment.Course.Id + "s"}", enrollment.Student.Id);
+                comd.ExecuteScalar();
+            }
         }
 
         public void UpdateRepository(ModelRepository repo)
         {
-                UpdateCourses(repo.Courses);
-                UpdateEnrollments(repo.Enrollments); 
+            UpdateCourses(repo.Courses);
+            UpdateEnrollments(repo.Enrollments);
         }
 
         private void UpdateCourses(List<Course> courses)
         {
             using (var conn = new SqlConnection(_connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ($"update Course set SeatsAvailable = @SeatsAvailable  " +
-                $"where CourseId = @CourseId;", conn))
             {
                 conn.Open();
                 foreach (Course course in courses)
                 {
-                    UpdateCourse(comd, course);
+                    UpdateCourse(course, conn);
                 }
                 conn.Close();
             }
+
         }
 
-        private void UpdateCourse(SqlCommand comd, Course course)
+        private void UpdateCourse(Course course, SqlConnection conn)
         {
-            comd.Parameters.AddWithValue("@id", course.Id);
-            comd.Parameters.AddWithValue("@SeatsAvailable", course.SeatsAvailable);
-            comd.ExecuteScalar();
+            using (SqlCommand comd = new SqlCommand
+                ($"update Course set SeatAvailable = @{course.Id + "us"} " +
+                $"where CourseId = @{course.Id + "u"};", conn))
+            {
+                comd.Parameters.AddWithValue($"@{course.Id + "u"}", course.Id);
+                comd.Parameters.AddWithValue($"@{course.Id + "us"}", course.SeatsAvailable);
+                comd.ExecuteScalar();
+            }
         }
 
         private void UpdateEnrollments(List<Enrollment> enrollments)
         {
             using (var conn = new SqlConnection(_connectionString))
-            using (SqlCommand comd = new SqlCommand
-                ($"update Enrollment set Grade = @grade where CourseId = @courseId and StudentId = @student", conn))
             {
                 conn.Open();
                 foreach (Enrollment enrollment in enrollments)
                 {
-                    UpdateEnrollment(comd, enrollment);
+                    UpdateEnrollment(enrollment, conn);
                 }
                 conn.Close();
             }
+            
         }
 
-        private void UpdateEnrollment(SqlCommand comd, Enrollment enrollment)
+        private void UpdateEnrollment(Enrollment enrollment, SqlConnection conn)
         {
-            comd.Parameters.AddWithValue("@courseId", enrollment.Course.Id);
-            comd.Parameters.AddWithValue("@studentId", enrollment.Student.Id);
-            comd.Parameters.AddWithValue("@grade", enrollment.Grade);
-            comd.ExecuteScalar();
+            using (SqlCommand comd = new SqlCommand
+                ($"update Enrollment set Grade = @{enrollment.Course.Id + enrollment.Student + "ug" } +  where CourseId = @{enrollment.Course.Id + "e"} and StudentId = @{enrollment.Student + "e"}", conn))
+            {
+                comd.Parameters.AddWithValue($"@{enrollment.Course.Id + "e"}", enrollment.Course.Id);
+                comd.Parameters.AddWithValue($"@{enrollment.Student + "e"}", enrollment.Student.Id);
+                comd.Parameters.AddWithValue($"@{enrollment.Course.Id + enrollment.Student + "ug" }", enrollment.Grade);
+                comd.ExecuteScalar();
+            }
+            
         }
     }
 }

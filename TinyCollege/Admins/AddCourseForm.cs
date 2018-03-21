@@ -36,10 +36,25 @@ namespace TinyCollege.Admins
 
         private bool ValidInputs() =>
             CourseIdCorrectLength()
+            && NewCourse()
             && InstructorIdCorrectLength()
             && InstructorExists()
             && TitleIsCorrectLength()
             && SeatsAreAppropriate();
+
+        private bool NewCourse()
+        {
+            bool newCourse = !_repo.Courses.Exists(c => c.Id.ToLowerInvariant() == courseIdBox.Text.ToLowerInvariant());
+            if (newCourse)
+                return true;
+            else
+            {
+                MessageBox.Show("Course with that ID already exists.");
+                return false;
+            }
+
+        }
+        
 
         private bool InstructorExists()
         {
@@ -83,7 +98,6 @@ namespace TinyCollege.Admins
                 MessageBox.Show("Course Title must have length greater than 0 and no greater than 100");
                 return false;
             }
-
         }
 
 
@@ -116,7 +130,8 @@ namespace TinyCollege.Admins
                Id = courseIdBox.Text,
                SeatsAvailable = int.Parse(seatsBox.Text),
                Name = titleBox.Text,
-               Instructor = FindInstructor(instructorIdBox.Text)
+               Instructor = FindInstructor(instructorIdBox.Text),
+               IsActive = activeCheckBox.Checked
            };
 
         private Instructor FindInstructor(string id)
@@ -130,6 +145,7 @@ namespace TinyCollege.Admins
             seatsBox.Text = string.Empty;
             titleBox.Text = string.Empty;
             instructorIdBox.Text = string.Empty;
+            
         }
 
         private void closeButton_Click(object sender, EventArgs e)
