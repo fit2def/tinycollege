@@ -47,7 +47,7 @@ namespace TinyCollege.Students
             }
             else
             {
-                MessageBox.Show("Student with that ID not found");
+                MessageBox.Show("Instructor with that ID not found");
             }
         }
 

@@ -80,6 +80,9 @@ namespace TinyCollege.Students
             Close();
         }
 
-       
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

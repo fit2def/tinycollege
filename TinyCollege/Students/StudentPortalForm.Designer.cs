@@ -33,15 +33,15 @@
             this.viewButton = new System.Windows.Forms.Button();
             this.idbox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.loginButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // closeButton
             // 
             this.closeButton.Location = new System.Drawing.Point(349, 314);
-            this.closeButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.closeButton.Margin = new System.Windows.Forms.Padding(2);
             this.closeButton.Name = "closeButton";
             this.closeButton.Size = new System.Drawing.Size(92, 43);
             this.closeButton.TabIndex = 0;
@@ -53,7 +53,7 @@
             // 
             this.registerButton.Enabled = false;
             this.registerButton.Location = new System.Drawing.Point(98, 225);
-            this.registerButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.registerButton.Margin = new System.Windows.Forms.Padding(2);
             this.registerButton.Name = "registerButton";
             this.registerButton.Size = new System.Drawing.Size(84, 38);
             this.registerButton.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             this.viewButton.Enabled = false;
             this.viewButton.Location = new System.Drawing.Point(258, 225);
-            this.viewButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.viewButton.Margin = new System.Windows.Forms.Padding(2);
             this.viewButton.Name = "viewButton";
             this.viewButton.Size = new System.Drawing.Size(84, 38);
             this.viewButton.TabIndex = 2;
@@ -92,15 +92,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Login";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(55, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Your Id";
-            // 
             // loginButton
             // 
             this.loginButton.Location = new System.Drawing.Point(165, 99);
@@ -111,6 +102,15 @@
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(55, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Your Id";
+            // 
             // StudentPortalForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -120,7 +120,7 @@
             this.Controls.Add(this.viewButton);
             this.Controls.Add(this.registerButton);
             this.Controls.Add(this.closeButton);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "StudentPortalForm";
             this.Text = "StudentPortalForm";
             this.groupBox1.ResumeLayout(false);
