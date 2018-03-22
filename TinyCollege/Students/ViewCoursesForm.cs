@@ -45,7 +45,7 @@ namespace TinyCollege.Students
         private void PopulateHoursCompleted(IEnumerable<Enrollment> enrollments)
         {
             int hours = enrollments
-                .Where(e => e.Grade >= .7)
+                .Where(e => e.Grade >= 2)
                 .Count() * 3;
             TotalHoursLabel.Text = hours.ToString();
             if (hours >= 120)

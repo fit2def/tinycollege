@@ -37,7 +37,6 @@
             this.closeButton = new System.Windows.Forms.Button();
             this.updateButton = new System.Windows.Forms.Button();
             this.selecCourseButton = new System.Windows.Forms.Button();
-            this.selectStudentButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -121,15 +120,6 @@
             this.selecCourseButton.UseVisualStyleBackColor = true;
             this.selecCourseButton.Click += new System.EventHandler(this.selecCourseButton_Click);
             // 
-            // selectStudentButton
-            // 
-            this.selectStudentButton.Location = new System.Drawing.Point(398, 222);
-            this.selectStudentButton.Name = "selectStudentButton";
-            this.selectStudentButton.Size = new System.Drawing.Size(75, 37);
-            this.selectStudentButton.TabIndex = 10;
-            this.selectStudentButton.Text = "Select Sutdent";
-            this.selectStudentButton.UseVisualStyleBackColor = true;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -144,7 +134,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(500, 389);
-            this.Controls.Add(this.selectStudentButton);
             this.Controls.Add(this.selecCourseButton);
             this.Controls.Add(this.updateButton);
             this.Controls.Add(this.closeButton);
@@ -175,7 +164,6 @@
         private System.Windows.Forms.Button closeButton;
         private System.Windows.Forms.Button updateButton;
         private System.Windows.Forms.Button selecCourseButton;
-        private System.Windows.Forms.Button selectStudentButton;
         private System.Windows.Forms.Label label2;
     }
 }
